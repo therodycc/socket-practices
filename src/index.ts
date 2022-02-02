@@ -16,7 +16,6 @@ class IndexServer {
     constructor() {
         this.config()
         this.routes()
-
     }
 
     config() {
@@ -34,8 +33,6 @@ class IndexServer {
         })
     }
 
-
-
     start() {
         this.http.listen(this.app.get('port'), () => {
             console.log('server on port ' + this.app.get('port'));
@@ -45,3 +42,7 @@ class IndexServer {
 
 const indexServer = new IndexServer()
 indexServer.start()
+
+export default {
+    io: indexServer.io
+}
