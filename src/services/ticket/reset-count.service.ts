@@ -1,15 +1,10 @@
-import fs from 'fs'
+import saveFileService from './save-file.service'
 
 export default () => {
-    let data = {
+    const result = saveFileService({
         lastTicket: 0,
         today: new Date().getDate()
-    }
+    })
 
-    let jsonDataString = JSON.stringify(data)
-
-    fs.writeFileSync('../../database/ticketDB.json', jsonDataString)
-
-    return { data, message: "the system Has been initialized" }
-
+    return { data: result.data, message: "the system Has been initialized" }
 }

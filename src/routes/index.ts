@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express'
+import ticketController from '../controllers/ticket/ticket.controller'
 class IndexRouter {
 
     public router: Router = Router()
@@ -7,11 +8,9 @@ class IndexRouter {
     }
 
     routes() {
-        this.router.get('/', (req: Request, res: Response) => {
-            res.status(200).json({
-                message: "Index Router"
-            })
-        })
+        this.router.get('/', ticketController.get)
+        this.router.get('/reset-count', ticketController.resetCount)
+        this.router.get('/generate', ticketController.generate)
     }
 }
 

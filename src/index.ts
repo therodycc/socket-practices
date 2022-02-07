@@ -7,8 +7,6 @@ import { Server } from 'socket.io'
 
 
 class IndexServer {
-
-
     public app: Application = express()
     public http = createServer(this.app)
     public io = new Server(this.http)
@@ -37,7 +35,14 @@ class IndexServer {
         this.http.listen(this.app.get('port'), () => {
             console.log('server on port ' + this.app.get('port'));
         })
+
+        this.io.on('connection', (server) => {
+            console.log('connection backend', server);
+        })
     }
+
+
+
 }
 
 const indexServer = new IndexServer()

@@ -1,9 +1,29 @@
-import get from '../../services/ticket/get.service'
+import { Request, Response } from 'express';
+import getService from '../../services/ticket/get.service'
+import nextService from '../../services/ticket/next.service';
+import resetCountService from '../../services/ticket/reset-count.service'
 class TicketController {
     constructor() {
-        const dataTicket = get()
-        console.log(dataTicket.data);
+
     }
+
+    get(req: Request, res: Response) {
+        const dataTicket = getService()
+        return res.json(dataTicket.data);
+    }
+
+    resetCount(req: Request, res: Response) {
+        const result = resetCountService()
+        return res.json(result)
+    }
+
+    generate(req: Request, res: Response) {
+        const result = nextService()
+        return res.json(result)
+    }
+
+
+
 }
 
 const ticketController = new TicketController()
