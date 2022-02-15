@@ -1,28 +1,23 @@
 import { Request, Response } from 'express';
-import getService from '../../services/ticket/get.service'
-import nextService from '../../services/ticket/next.service';
-import resetCountService from '../../services/ticket/reset-count.service'
+import { getAllTicketsService } from '../../services/ticket/getAll.service'
+import { nextTicketsService } from '../../services/ticket/next.service';
+import { resetCountTicketsService } from '../../services/ticket/reset-count.service'
 class TicketController {
-    constructor() {
 
-    }
-
-    get(req: Request, res: Response) {
-        const dataTicket = getService()
+    getAll(req: Request, res: Response) {
+        const dataTicket = getAllTicketsService()
         return res.json(dataTicket.data);
     }
 
     resetCount(req: Request, res: Response) {
-        const result = resetCountService()
+        const result = resetCountTicketsService()
         return res.json(result)
     }
 
     generate(req: Request, res: Response) {
-        const result = nextService()
+        const result = nextTicketsService()
         return res.json(result)
     }
-
-
 
 }
 

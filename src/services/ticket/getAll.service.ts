@@ -1,7 +1,8 @@
 import dataJson from '../../database/ticketDB.json'
 
-export default () => {
+export const getAllTicketsService = () => {
     let result = dataJson
+    console.log({result},'Get all')
     return { data: result, message: "Got Successfully" }
 }
 

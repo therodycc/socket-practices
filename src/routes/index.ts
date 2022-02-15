@@ -8,7 +8,7 @@ class IndexRouter {
     }
 
     routes() {
-        this.router.get('/', ticketController.get)
+        this.router.get('/', ticketController.getAll)
         this.router.get('/reset-count', ticketController.resetCount)
         this.router.get('/generate', ticketController.generate)
     }

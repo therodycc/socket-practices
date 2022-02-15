@@ -1,14 +1,16 @@
-import getService from "./get.service"
-import saveFileService from "./save-file.service"
+import { getAllTicketsService } from "./getAll.service"
+import { saveFileTicketService } from "./save-file.service"
 
-export default () => {
+export const nextTicketsService = () => {
 
-    const ticketInfo = getService()
+    const ticketInfo = getAllTicketsService()
 
-    const result = saveFileService({
+    const result = saveFileTicketService({
         lastTicket: +ticketInfo.data.lastTicket + 1,
         today: new Date().getDate()
     })
+
+    console.log({result}, 'Next service')
 
     return { result, message: `The next ticket is ${result.data.lastTicket}` }
 }

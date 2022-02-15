@@ -1,1 +1,10 @@
-{"lastTicket":5,"today":6}
+{
+    "lastTicket": 5,
+    "today": 6,
+    "tickets": [
+        {
+            "desk": 1,
+            "ticket": 1
+        }
+    ]
+}
