@@ -6,5 +6,4 @@ export const saveFileTicketService = (data: any) => {
     const result = fs.writeFileSync('./src/database/ticketDB.json', jsonDataString)
     console.log({result},'Save file service')
     return { data, message: "Saved" }
-
 }
