@@ -7,8 +7,8 @@ import { Server } from 'socket.io'
 
 
 class IndexServer {
-    public app: Application = express()
-    public http = createServer(this.app)
+    private app: Application = express()
+    private http = createServer(this.app)
     public io = new Server(this.http)
 
     constructor() {
@@ -16,7 +16,7 @@ class IndexServer {
         this.routes()
     }
 
-    config() {
+    private config() {
         this.app.set('port', process.env.PORT || 5000)
         this.app.use(morgan('dev'))
         this.app.use(cors())
@@ -24,7 +24,7 @@ class IndexServer {
         this.app.use(urlencoded({ extended: false }))
     }
 
-    routes() {
+    private routes() {
         this.app.use('/', indexRouter)
         this.io.on('connection', (client) => {
             console.log('New user connected', { client });

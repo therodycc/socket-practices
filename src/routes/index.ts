@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express'
+import { getAllNotesController } from '../controllers/notes/notes.controller'
 import ticketController from '../controllers/ticket/ticket.controller'
 class IndexRouter {
 
@@ -11,6 +12,7 @@ class IndexRouter {
         this.router.get('/', ticketController.getAll)
         this.router.get('/reset-count', ticketController.resetCount)
         this.router.get('/generate', ticketController.generate)
+        this.router.get('/notes', getAllNotesController)
     }
 }
 
