@@ -1,16 +1,10 @@
 {
   "notes": [
     {
-      "id": 1,
-      "uuid": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "uuid": "12j2jj",
-      "title": "Hola Mundo",
+      "uuid": "1aea7706-eab6-418b-9429-bc8555fe305a",
+      "title": "Do the tasks",
       "description": "Hello world",
-      "id": 2
+      "id": 1
     }
   ]
 }

@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { getAllNotesController } from "../../controllers/notes/get-all.controller";
+import notes from "../../controllers/notes";
 
 const router = Router()
 
-router.get('/notes', getAllNotesController)
+const { createNoteController, getAllNotesController } = notes
+
+router.get('/', getAllNotesController)
+router.post('/', createNoteController)
 
 export default router
