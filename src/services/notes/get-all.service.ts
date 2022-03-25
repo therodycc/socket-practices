@@ -1,13 +1,20 @@
+import axios from 'axios';
 import dotenv from 'dotenv'
-import fetch from "node-fetch";
 dotenv.config()
 
 export const getAllNotesService = async () => {
-    fetch(`${process.env.APP_URL}/notes`)
-        .then(data => { return { data } })
-        .catch(error => {
-            return {
-                error: { message: "Internal server error", error }
-            }
-        })
+    try {
+        const result = await axios.get(`${process.env.APP_URL_API}/notes`)
+
+        if (!result) return {
+            error: { message: "Can't get notes" }
+        }
+        
+        return { data: result.data }
+    } catch (error) {
+        console.log({error});
+        return {
+            error: { message: "Internal server error", error }
+        }
+    }
 }

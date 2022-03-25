@@ -2,9 +2,15 @@
   "notes": [
     {
       "id": 1,
+      "uuid": "",
       "title": "",
-      "description": "",
-      "author": ""
+      "description": ""
+    },
+    {
+      "uuid": "12j2jj",
+      "title": "Hola Mundo",
+      "description": "Hello world",
+      "id": 2
     }
   ]
 }

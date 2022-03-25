@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express'
-import { getAllNotesController } from '../controllers/notes/notes.controller'
+import { getAllNotesController } from '../controllers/notes/get-all.controller'
 import ticketController from '../controllers/ticket/ticket.controller'
 class IndexRouter {
 

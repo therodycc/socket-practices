@@ -33,7 +33,7 @@ class IndexServer {
 
     start() {
         this.http.listen(this.app.get('port'), () => {
-            console.log('server on port ' + this.app.get('port'));
+            console.log(`Server on port ${this.app.get('port')}`);
         })
 
         this.io.on('connection', (server) => {
