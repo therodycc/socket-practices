@@ -31,13 +31,16 @@ class IndexServer {
         })
     }
 
+    socketConnection() {
+        return this.io.on('connection', (server) => {
+            return server
+            console.log('connection backend', server);
+        })
+    }
+
     start() {
         this.http.listen(this.app.get('port'), () => {
             console.log(`Server on port ${this.app.get('port')}`);
-        })
-
-        this.io.on('connection', (server) => {
-            console.log('connection backend', server);
         })
     }
 
@@ -47,7 +50,6 @@ class IndexServer {
 
 const indexServer = new IndexServer()
 indexServer.start()
+indexServer.socketConnection()
 
-export default {
-    io: indexServer.io
-}
+export const ioServer = indexServer.socketConnection()

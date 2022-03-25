@@ -9,8 +9,5 @@ export const nextTicketsService = () => {
         lastTicket: +ticketInfo.data.lastTicket + 1,
         today: new Date().getDate()
     })
-
-    console.log({result}, 'Next service')
-
     return { result, message: `The next ticket is ${result.data.lastTicket}` }
 }

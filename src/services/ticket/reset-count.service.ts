@@ -6,7 +6,5 @@ export const resetCountTicketsService = () => {
         today: new Date().getDate()
     })
 
-    console.log({result}, 'reset service')
-
     return { data: result.data, message: "the system Has been initialized" }
 }
