@@ -1,9 +1,10 @@
-import express, { application, Application, urlencoded } from 'express'
+import express, { Application, urlencoded } from 'express'
 import cors from 'cors'
-import morgan from 'morgan'
-import indexRouter from './routes'
 import { createServer } from 'http'
+import morgan from 'morgan'
 import { Server } from 'socket.io'
+import indexRouter from './routes'
+import { configApp } from './config/server'
 
 
 class IndexServer {
@@ -17,7 +18,7 @@ class IndexServer {
     }
 
     private config() {
-        this.app.set('port', process.env.PORT || 5000)
+        this.app.set('port', configApp.app.port || 8000)
         this.app.use(morgan('dev'))
         this.app.use(cors())
         this.app.use(express.json())
@@ -26,15 +27,12 @@ class IndexServer {
 
     private routes() {
         this.app.use('/', indexRouter)
-        this.io.on('connection', (client) => {
-            console.log('New user connected', { client });
-        })
     }
 
     socketConnection() {
-        return this.io.on('connection', (server) => {
-            return server
-            console.log('connection backend', server);
+        return this.io.on('connection', (client) => {
+            console.table({ clientId: client.id, disconnected: client.disconnected });
+            return client
         })
     }
 
@@ -50,6 +48,5 @@ class IndexServer {
 
 const indexServer = new IndexServer()
 indexServer.start()
-indexServer.socketConnection()
-
-export const ioServer = indexServer.socketConnection()
+const ioConnection = indexServer.socketConnection()
+export const ioServer = ioConnection
